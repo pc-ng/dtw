@@ -2,6 +2,7 @@ import numpy as np
 
 def computed_dtwMat(A, B):
     d = lambda x, y: np.abs(x - y)
+    dtw_mat = np.zeros((len(B), len(A)))
 
     for i in range(len(B)):
         for j in range(len(A)):
@@ -43,6 +44,6 @@ def get_warpingPath(A, B):
     return path, warp, dtw_mat
 
 def normalized_dist(A, B):
-    path, warp, dtw_matrix = get_warpingPath(A, B)
+    path, warp, dtw_mat = get_warpingPath(A, B)
     D = np.sum(warp * dtw_mat)/len(path)
     return D
